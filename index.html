@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 250px; /* Increased size */
+            height: auto;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .balloon1 { left: 10%; animation-duration: 12s; }
+        .balloon2 { left: 30%; animation-duration: 10s; }
+        .balloon3 { left: 50%; animation-duration: 14s; }
+        .balloon4 { left: 70%; animation-duration: 13s; }
+        .balloon5 { left: 90%; animation-duration: 11s; }
+        .balloon6 { left: 80%; animation-duration: 21s; }
+        .balloon7{left: 70% ; animation-duration:15s;}
+ 
+        @keyframes float {
+            0% { transform: translateY(100vh); }
+            100% { transform: translateY(-100vh); }
+        }
+
+        .central-image {
+            width: 60%;
+            max-width: 400px; /* Adjusted max size */
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        .animated-text {
+            font-family: 'Times New Roman', serif;
+            font-size: 3em; /* Increased size */
+            font-weight: bold; /* Heavier weight */
+            color: #ff66cc;
+            margin-top: 20px;
+            text-align: center;
+            z-index: 10;
+            perspective: 1000px;
+            animation: rotateText 5s infinite linear;
+        }
+
+        @keyframes rotateText {
+            0% { transform: rotateX(0deg); }
+            50% { transform: rotateX(360deg); }
+            100% { transform: rotateX(0deg); }
+        }
+
+        @media (max-width: 768px) {
+            .central-image {
+                width: 70%;
+                max-width: 300px; /* Adjusted max size for mobile */
+            }
+
+            .animated-text {
+                font-size: 2.5em; /* Adjusted text size for mobile */
+            }
+
+            .balloon {
+                width: 150px; /* Adjusted balloon size for mobile */
+            }
+        }
+
+        .nav-button {
+            margin-top: 20px;
+            padding: 15px 30px; /* Increased padding */
+            font-size: 1.5em; /* Increased font size */
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff66cc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .nav-button:hover {
+            background-color: #ff3399;
+        }
+
+        audio {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img src="de.jpg" alt="Friend's Image" class="central-image">
+    <div class="animated-text">Happy Birthday, Deeku!</div>
+
+    <!-- Balloons -->
+    <img src="b2-removebg-preview.png" class="balloon balloon1" alt="Balloon 1">
+    <img src="b3-removebg-preview.png" class="balloon balloon7" alt="Balloon 7">
+    <img src="ballon2.svg" class="balloon balloon2" alt="Balloon 2">
+    <img src="ballon3.svg" class="balloon balloon3" alt="Balloon 3">
+    <img src="b2-removebg-preview.png" class="balloon balloon6" alt="Balloon 6">
+    <img src="ballon1.svg" class="balloon balloon4" alt="Balloon 4">
+    <img src="b3-removebg-preview.png" class="balloon balloon5" alt="Balloon 5">
+
+    <!-- Navigation Button -->
+    <a href="surprise.html">
+        <button class="nav-button">Surprise</button>
+    </a>
+
+    <!-- Background Music -->
+    <audio autoplay loop>
+        <source src="bg1.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>

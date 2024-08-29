@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+        .timer {
+            font-size: 3em;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            font-family: 'Times New Roman', serif;
+            font-size: 3em;
+            font-weight: bold;
+            color: #ff66cc;
+            margin-top: 20px;
+            text-align: center;
+            perspective: 1000px;
+            opacity: 0;
+            transform: rotateX(90deg);
+            transition: opacity 1s, transform 1s;
+        }
+        .show-message {
+            opacity: 1;
+            transform: rotateX(0deg);
+        }
+        .nav-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff66cc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav-button:hover {
+            background-color: #ff3399;
+        }
+
+        @media (max-width: 768px) {
+            .timer {
+                font-size: 2em;
+            }
+            .message {
+                font-size: 2em;
+            }
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 1.2em;
+            }
+            video {
+                width: 100%;
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timer {
+                font-size: 1.5em;
+            }
+            .message {
+                font-size: 1.5em;
+            }
+            .nav-button {
+                padding: 8px 16px;
+                font-size: 1em;
+            }
+            video {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+    <script>
+        function startTimer(duration, display) {
+            let timer = duration, days, hours, minutes, seconds;
+            let countdown = setInterval(function () {
+                days = Math.floor(timer / (60 * 60 * 24));
+                hours = Math.floor((timer % (60 * 60 * 24)) / (60 * 60));
+                minutes = Math.floor((timer % (60 * 60)) / 60);
+                seconds = Math.floor(timer % 60);
+
+                display.textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+                if (--timer < 0) {
+                    clearInterval(countdown);
+                    document.getElementById('video').classList.remove('hidden');
+                    document.querySelector('.message').classList.add('show-message');
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const targetDate = new Date("August 29, 2024 11:08:00").getTime();
+            const now = new Date().getTime();
+            const timeRemaining = Math.floor((targetDate - now) / 1000); // Time difference in seconds September 10, 2024 21:00:00
+
+            if (timeRemaining > 0) {
+                startTimer(timeRemaining, document.querySelector('.timer'));
+            } else {
+                document.getElementById('video').classList.remove('hidden');
+                document.querySelector('.message').classList.add('show-message');
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="timer"></div>
+    <div class="message">Here is your surprise, Shobi!</div>
+    <video id="video" class="hidden" width="800" controls>
+        <source src="b6.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <a href="index.html">
+        <button class="nav-button">Back</button>
+    </a>
+</body>
+</html>
