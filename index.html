@@ -109,12 +109,37 @@
             top: 10px;
             left: 10px;
         }
+         #rain-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.drop {
+    position: absolute;
+    bottom: 100%;
+    width: 2px;
+    height: 10px;
+    background: #ffafcc;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
     </style>
 </head>
 <body>
     <img src="de.jpg" alt="Friend's Image" class="central-image">
     <div class="animated-text">Happy Birthday, Deeku!💫❤</div>
-
+     <div id="rain-container"></div>
+    <script src="script.js"></script>
     <!-- Balloons -->
     <img src="b2-removebg-preview.png" class="balloon balloon1" alt="Balloon 1">
     <img src="b3-removebg-preview.png" class="balloon balloon7" alt="Balloon 7">
