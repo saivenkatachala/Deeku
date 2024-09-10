@@ -45,6 +45,22 @@
             opacity: 1;
             transform: rotateX(0deg);
         }
+        .download-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff66cc;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .download-button:hover {
+            background-color: #ff3399;
+        }
         .nav-button {
             margin-top: 20px;
             padding: 15px 30px;
@@ -67,13 +83,9 @@
             .message {
                 font-size: 2em;
             }
-            .nav-button {
+            .download-button, .nav-button {
                 padding: 10px 20px;
                 font-size: 1.2em;
-            }
-            video {
-                width: 100%;
-                max-width: 90%;
             }
         }
 
@@ -84,13 +96,9 @@
             .message {
                 font-size: 1.5em;
             }
-            .nav-button {
+            .download-button, .nav-button {
                 padding: 8px 16px;
                 font-size: 1em;
-            }
-            video {
-                width: 100%;
-                max-width: 100%;
             }
         }
     </style>
@@ -107,21 +115,21 @@
 
                 if (--timer < 0) {
                     clearInterval(countdown);
-                    document.getElementById('video').classList.remove('hidden');
+                    document.getElementById('download').classList.remove('hidden');
                     document.querySelector('.message').classList.add('show-message');
                 }
             }, 1000);
         }
 
         window.onload = function () {
-            const targetDate = new Date("September 10, 2024 22:00:00").getTime();
+            const targetDate = new Date("September 10, 2024 21:52:00").getTime();
             const now = new Date().getTime();
             const timeRemaining = Math.floor((targetDate - now) / 1000); // Time difference in seconds September 10, 2024 21:00:00
 
             if (timeRemaining > 0) {
                 startTimer(timeRemaining, document.querySelector('.timer'));
             } else {
-                document.getElementById('video').classList.remove('hidden');
+                document.getElementById('download').classList.remove('hidden');
                 document.querySelector('.message').classList.add('show-message');
             }
         };
@@ -129,11 +137,9 @@
 </head>
 <body>
     <div class="timer"></div>
-    <div class="message">Here is your surprise, Shobi!</div>
-    <video id="video" class="hidden" width="800" controls>
-        <source src="b6.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="message">Here is your surprise, Deeku!</div>
+    <div class="message">Once again Happy Birthday Deeku😍</div>
+    <a id="download" href="sur.mov" download class="download-button hidden">click here for surprise</a>
     <a href="index.html">
         <button class="nav-button">Back</button>
     </a>
